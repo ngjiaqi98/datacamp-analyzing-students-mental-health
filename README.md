@@ -27,3 +27,18 @@ stay	Current length of stay in years
 todep	Total score of depression (PHQ-9 test)
 tosc	Total score of social connectedness (SCS test)
 toas	Total score of acculturative stress (ASISS test)
+
+
+
+-- Run this code to view the data in students
+SELECT  stay,
+	COUNT (*) AS count_int,
+	ROUND(AVG(todep),2) AS average_phq, 
+	ROUND(AVG(tosc),2) AS average_scs, 
+	ROUND(AVG(toas),2) AS average_as
+FROM students
+-- only focus on international students 
+WHERE inter_dom ='Inter'
+-- Sort the results by the length of stay in descending order.
+GROUP BY stay
+ORDER BY stay DESC
